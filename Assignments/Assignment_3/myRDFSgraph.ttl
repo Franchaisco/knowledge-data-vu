@@ -1,0 +1,69 @@
+@prefix ns1: <http://example.com/kad/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ns1:Actor a rdfs:Class ;
+    rdfs:label "Actor" ;
+    rdfs:subClassOf ns1:Person .
+
+ns1:Cinema a rdfs:Class ;
+    rdfs:label "Cinema",
+        "Pathé" .
+
+ns1:Director a rdfs:Class ;
+    rdfs:label "Director" .
+
+ns1:Human a rdfs:Class ;
+    rdfs:label "Human" .
+
+ns1:Person a rdfs:Class ;
+    rdfs:label "Person" ;
+    rdfs:subClassOf ns1:Human .
+
+ns1:Cineworld a ns1:Cinema .
+
+ns1:IT a ns1:Movie ;
+    rdfs:label "IT" .
+
+ns1:Johnny_Depp a ns1:Actor ;
+    rdfs:label "Johnny Depp" .
+
+ns1:Murphy a ns1:Actor ;
+    ns1:isDirectedBy ns1:Nolan ;
+    ns1:playsIn ns1:Inception .
+
+ns1:Steven_Spielberg a ns1:Director ;
+    rdfs:label "Steven Spielberg" .
+
+ns1:isDirectedBy a rdf:Property ;
+    rdfs:label "is directed by" ;
+    rdfs:domain ns1:Actor ;
+    rdfs:range ns1:Director ;
+    rdfs:subPropertyOf ns1:directs .
+
+ns1:isShownAt a rdf:Property ;
+    rdfs:label "is directed by" ;
+    rdfs:domain ns1:Movie ;
+    rdfs:range ns1:Cinema .
+
+ns1:playsIn a rdf:Property ;
+    rdfs:label "plays in" ;
+    rdfs:domain ns1:Actor ;
+    rdfs:range ns1:Movie .
+
+ns1:Nolan a ns1:Director ;
+    ns1:directs ns1:Inception .
+
+ns1:Pathé a ns1:Cinema .
+
+ns1:directs a rdf:Property ;
+    rdfs:label "director" ;
+    rdfs:domain ns1:Director ;
+    rdfs:range ns1:Movie .
+
+ns1:Inception a ns1:Movie ;
+    ns1:isShownAt ns1:Pathé .
+
+ns1:Movie a ns1:Class ;
+    rdfs:label "Movie" .
+
